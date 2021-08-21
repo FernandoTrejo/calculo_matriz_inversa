@@ -4,10 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculo de Matriz Inversa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="js/Matriz.js"></script>
 </head>
 <body>
+    <div class="container mt-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <h3>Ingresar Matriz</h3>
+
+                <form action="#">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="card-header">Matriz</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <td><input type="number" class="form-control" id="pos11" value="0"></td>
+                                        <td><input type="number" class="form-control" id="pos12" value="0"></td>
+                                        <td><input type="number" class="form-control" id="pos13" value="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="number" class="form-control" id="pos21" value="0"></td>
+                                        <td><input type="number" class="form-control" id="pos22" value="0"></td>
+                                        <td><input type="number" class="form-control" id="pos23" value="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="number" class="form-control" id="pos31" value="0"></td>
+                                        <td><input type="number" class="form-control" id="pos32" value="0"></td>
+                                        <td><input type="number" class="form-control" id="pos33" value="0"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-light" id="btnCalcular">Calcular</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <div class="card text-white bg-danger mb-3 d-none" id="cardError">
+                    <div class="card-header">Error</div>
+                    <div class="card-body">
+                        <p class="">La matriz ingresada no tiene inversa</p>
+                    </div>
+                </div>
+                
+                <div class="card text-white bg-primary mb-3 d-none" id="cardResultados">
+                    <div class="card-header">Matriz</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td><input type="number" class="form-control" id="r_pos11" value="0" readonly></td>
+                                    <td><input type="number" class="form-control" id="r_pos12" value="0" readonly></td>
+                                    <td><input type="number" class="form-control" id="r_pos13" value="0" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="number" class="form-control" id="r_pos21" value="0" readonly></td>
+                                    <td><input type="number" class="form-control" id="r_pos22" value="0" readonly></td>
+                                    <td><input type="number" class="form-control" id="r_pos23" value="0" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="number" class="form-control" id="r_pos31" value="0" readonly></td>
+                                    <td><input type="number" class="form-control" id="r_pos32" value="0" readonly></td>
+                                    <td><input type="number" class="form-control" id="r_pos33" value="0" readonly></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <script>
         let elementos = [
             [7, 8, 3],
@@ -16,9 +93,7 @@
         ];
 
         let matriz33 = new Matriz3x3(elementos);
-        console.log(matriz33);
-        console.log(matriz33.matrizTranspuesta());
-        console.log(matriz33.matrizAdjunta());
+        console.log(matriz33.matrizInversa());
     </script>
     
 </body>

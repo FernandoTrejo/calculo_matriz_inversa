@@ -68,7 +68,25 @@ class Matriz3x3{
 
         return new Matriz3x3(elementos);
     }
+
+    matrizInversa(){
+        let adjunta = this.matrizAdjunta();
+        let transpuesta = adjunta.matrizTranspuesta();
+
+        let inversa = transpuesta.dividirEscalar(this.determinante);
+        return inversa;
+    }
     
+    dividirEscalar(numero){
+        let elementos = [
+            [this.pos11 / numero, this.pos12 / numero, this.pos13 / numero],
+            [this.pos21 / numero, this.pos22 / numero, this.pos23 / numero],
+            [this.pos31 / numero, this.pos32 / numero, this.pos33 / numero]
+        ];
+
+        return new Matriz3x3(elementos);
+    }
+
     convertirModoArreglo(){
         return [
             [this.pos11, this.pos12, this.pos13],
