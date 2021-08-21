@@ -9,14 +9,12 @@
     <script src="js/Matriz.js"></script>
 </head>
 <body>
-    <div class="container mt-4">
+    <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-7">
-                <h3>Ingresar Matriz</h3>
-
                 <form action="#">
                     <div class="card text-white bg-success mb-3">
-                        <div class="card-header">Matriz</div>
+                        <div class="card-header"><h4>Ingresar Matriz</h4></div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
@@ -39,7 +37,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-light" id="btnCalcular">Calcular</button>
+                            <button class="btn btn-light" id="btnCalcular" onclick="calcularInversa()">Calcular</button>
                         </div>
                     </div>
                 </form>
@@ -86,14 +84,44 @@
 
 
     <script>
-        let elementos = [
-            [7, 8, 3],
-            [-6, 3, 3],
-            [5, 4, 1]
-        ];
 
-        let matriz33 = new Matriz3x3(elementos);
-        console.log(matriz33.matrizInversa());
+        function select(id){
+            return document.getElementById(id).value;
+        }
+
+        function put(id, value){
+            document.getElementById(id).value = value;
+        }
+
+        function calcularInversa(){
+            let elementos = [
+                [Number(select("pos11")), Number(select("pos12")), Number(select("pos13"))],
+                [Number(select("pos21")), Number(select("pos22")), Number(select("pos23"))],
+                [Number(select("pos31")), Number(select("pos32")), Number(select("pos33"))]
+            ];
+
+            let matrizA = new Matriz3x3(elementos);
+            
+            if(matrizA.getDeterminante() != 0){
+                let inversa = matrizA.matrizInversa();
+                put("r_pos11", inversa.pos11.toFixed(2));
+                put("r_pos12", inversa.pos12.toFixed(2));
+                put("r_pos13", inversa.pos13.toFixed(2));
+                put("r_pos21", inversa.pos21.toFixed(2));
+                put("r_pos22", inversa.pos22.toFixed(2));
+                put("r_pos23", inversa.pos23.toFixed(2));
+                put("r_pos31", inversa.pos31.toFixed(2));
+                put("r_pos32", inversa.pos32.toFixed(2));
+                put("r_pos33", inversa.pos33.toFixed(2));
+                
+                document.getElementById("cardResultados").classList.remove("d-none");
+                document.getElementById("cardError").classList.add("d-none");
+            }else{
+                document.getElementById("cardError").classList.remove("d-none");
+                document.getElementById("cardResultados").classList.add("d-none");
+            }
+
+        }
     </script>
     
 </body>
