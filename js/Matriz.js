@@ -38,26 +38,13 @@ class Matriz3x3{
     matrizAdjunta(){
         let cofactores = this.matrizCofactores();
 
-        //multiplicar por matriz signos
-        let matrizSignos = this.obtenerMatrizSignos();
-
         let elementos = [
-            
+            [cofactores.pos11, cofactores.pos12 * -1, cofactores.pos13],
+            [cofactores.pos21 * -1, cofactores.pos22, cofactores.pos23 * -1],
+            [cofactores.pos31, cofactores.pos32 * -1, cofactores.pos33]
         ];
-        let matrizAdjunta = {
-            pos11: cofactores.cof11 * matrizSignos.sig11,
-            pos12: cofactores.cof12 * matrizSignos.sig12,
-            pos13: cofactores.cof13 * matrizSignos.sig13,
-            pos21: cofactores.cof21 * matrizSignos.sig21,
-            pos22: cofactores.cof22 * matrizSignos.sig22,
-            pos23: cofactores.cof23 * matrizSignos.sig23,
-            pos31: cofactores.cof31 * matrizSignos.sig31,
-            pos32: cofactores.cof32 * matrizSignos.sig32,
-            pos33: cofactores.cof33 * matrizSignos.sig33
-        };
 
-
-        return matrizAdjunta;
+        return new Matriz3x3(elementos);
     }
 
     matrizCofactores(){
@@ -78,20 +65,6 @@ class Matriz3x3{
         ];
 
         return new Matriz3x3(elementos);
-    }
-
-    obtenerMatrizSignos(){
-        return {
-            sig11: 1,
-            sig12: -1,
-            sig13: 1,
-            sig21: -1,
-            sig22: 1,
-            sig23: -1,
-            sig31: 1,
-            sig32: -1,
-            sig33: 1,
-        }
     }
 
     getDeterminante(){
