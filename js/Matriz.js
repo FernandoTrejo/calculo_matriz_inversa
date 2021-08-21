@@ -27,14 +27,6 @@ class Matriz3x3{
         return determinante;
     }
 
-    convertirModoArreglo(){
-        return [
-            [this.pos11, this.pos12, this.pos13],
-            [this.pos21, this.pos22, this.pos23],
-            [this.pos31, this.pos32, this.pos33]
-        ];
-    }
-
     matrizAdjunta(){
         let cofactores = this.matrizCofactores();
 
@@ -65,6 +57,24 @@ class Matriz3x3{
         ];
 
         return new Matriz3x3(elementos);
+    }
+
+    matrizTranspuesta(){
+        let elementos = [
+            [this.pos11, this.pos21, this.pos31],
+            [this.pos12, this.pos22, this.pos32],
+            [this.pos13, this.pos23, this.pos33]
+        ];
+
+        return new Matriz3x3(elementos);
+    }
+    
+    convertirModoArreglo(){
+        return [
+            [this.pos11, this.pos12, this.pos13],
+            [this.pos21, this.pos22, this.pos23],
+            [this.pos31, this.pos32, this.pos33]
+        ];
     }
 
     getDeterminante(){

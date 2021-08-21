@@ -9,15 +9,16 @@
 </head>
 <body>
     <script>
-        let matriz = [
+        let elementos = [
             [7, 8, 3],
             [-6, 3, 3],
             [5, 4, 1]
         ];
 
-        let matriz33 = new Matriz3x3(matriz);
+        let matriz33 = new Matriz3x3(elementos);
         console.log(matriz33);
-        console.log(matriz33.calcularAdjunta());
+        console.log(matriz33.matrizTranspuesta());
+        console.log(matriz33.matrizAdjunta());
     </script>
     
 </body>
