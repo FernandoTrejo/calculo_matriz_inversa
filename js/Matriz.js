@@ -87,8 +87,12 @@ class Matriz3x3{
         return new Matriz3x3(elementos);
     }
 
-    getDeterminante(){
-        return this.determinante;
+    convertirArreglo(){
+        return [
+            this.pos11, this.pos12, this.pos13,
+            this.pos21, this.pos22, this.pos23,
+            this.pos31, this.pos32, this.pos33
+        ];
     }
 
 }
